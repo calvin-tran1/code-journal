@@ -7,6 +7,7 @@ $photoUrl.addEventListener('input', function () {
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
+
   var titleValue = $form.elements.title.value;
   var photoUrlValue = $form.elements.photoUrl.value;
   var notesValue = $form.elements.notes.value;
@@ -16,5 +17,6 @@ $form.addEventListener('submit', function (event) {
   data.nextEntryId++;
   data.entries.push(obj);
   document.getElementById('img-placeholder').setAttribute('src', 'images/placeholder-image-square.jpg');
+
   return $form.reset();
 });
