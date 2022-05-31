@@ -11,11 +11,11 @@ $form.addEventListener('submit', function (event) {
   var titleValue = $form.elements.title.value;
   var photoUrlValue = $form.elements.photoUrl.value;
   var notesValue = $form.elements.notes.value;
-  var nextEntryIdValue = data.nextEntryId;
-  var obj = { titleValue, photoUrlValue, notesValue, nextEntryIdValue };
+  var entryId = data.nextEntryId;
+  var obj = { titleValue, photoUrlValue, notesValue, entryId };
 
   data.nextEntryId++;
-  data.entries.push(obj);
+  data.entries.unshift(obj);
   document.getElementById('img-placeholder').setAttribute('src', 'images/placeholder-image-square.jpg');
 
   return $form.reset();
