@@ -18,13 +18,14 @@
   width: 100%;
 }
 
+.column-half.entries-list {
+  overflow: auto;
+  text-overflow: clip;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
-  }
-
-  .column-full.header {
-    margin-left: 9em;
   }
 
   .column-full,
@@ -34,5 +35,18 @@
 
   .column-half {
     width: 50%;
+  }
+
+  .column-full.header {
+    margin-left: 9em;
+  }
+
+  .container.entries-list {
+    display: flex;
+    justify-content: center;
+  }
+
+  .row.entries-list {
+    width: 560px;
   }
 }

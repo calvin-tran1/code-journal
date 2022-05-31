@@ -63,3 +63,18 @@ header {
   background-color: rgba(86, 43, 129, 255);
   padding: 0.2rem;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+p {
+  line-height: 1.5rem;
+}
