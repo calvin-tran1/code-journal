@@ -29,7 +29,7 @@
     <div data-view="entry-form" class="container">
       <div class="row">
         <div class="column-full">
-          <form method="post">
+          <form id="journal-form" method="post">
             <div class="row">
               <div class="column-full">
                 <h1>New Entry</h1>
@@ -41,17 +41,17 @@
               </div>
               <div class="column-half">
                 <label for="title">Title</label>
-                <input required type="text" id="title" name="entry_title">
+                <input required type="text" id="title" name="title">
                 <label for="photo">Photo URL</label>
-                <input required type="url" id="photo_url" name="entry_photo_url">
+                <input required type="url" id="photo_url" name="photoUrl">
               </div>
             </div>
             <div class="row">
               <div class="column-full">
                 <label for="notes">Notes</label>
-                <textarea required rows="6" id="notes" name="entry_notes"></textarea>
+                <textarea required rows="6" id="notes" name="notes"></textarea>
                 <div class="save-button">
-                  <button type="submit">SAVE</button>
+                  <button type="submit" id="save">SAVE</button>
                 </div>
               </div>
             </div>
