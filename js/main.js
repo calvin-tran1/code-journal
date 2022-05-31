@@ -18,5 +18,5 @@ $form.addEventListener('submit', function (event) {
   data.entries.unshift(obj);
   document.getElementById('img-placeholder').setAttribute('src', 'images/placeholder-image-square.jpg');
 
-  return $form.reset();
+  $form.reset();
 });
