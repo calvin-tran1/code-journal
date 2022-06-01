@@ -4,6 +4,7 @@ var $ul = document.querySelector('ul');
 var $entriesBtn = document.querySelector('.entries-btn');
 var $entryForm = document.querySelector('.entry-form');
 var $newEntryBtn = document.querySelector('.new-entry-btn');
+var $entries = document.querySelector('.entries');
 
 // start@photoURL updates placeholder img
 $photoUrl.addEventListener('input', function () {
@@ -24,10 +25,13 @@ $form.addEventListener('submit', function (event) {
   data.nextEntryId++;
   data.entries.unshift(obj);
   document.getElementById('img-placeholder').setAttribute('src', 'images/placeholder-image-square.jpg');
-
+  data.view = 'entries';
   $form.reset();
+  $entries.classList.remove('hidden');
   $entryForm.classList.remove('hidden');
   $entryForm.className = 'entry-form container hidden';
+
+  location.reload();
 });
 // end@submit form inputs to data
 
@@ -92,7 +96,7 @@ function journal(entry) {
 }
 // end@dom creation for entries
 
-// start@load dom content
+// start@load dom content for new entries
 window.addEventListener('DOMContentLoaded', event => {
   for (var i = 0; i < data.entries.length; i++) {
     var journalEntries = journal(data.entries[i]);
@@ -100,22 +104,31 @@ window.addEventListener('DOMContentLoaded', event => {
     $ul.appendChild(journalEntries);
   }
 });
-// end@load dom content
+// end@load dom content for new entries
 
 // start@nav entries
 $entriesBtn.addEventListener('click', function (e) {
   if (e.target && e.target.matches('.entries-btn')) {
     $entryForm.className = 'entry-form container hidden';
+    $entries.className = 'entries container';
   } else {
     $entryForm.classList.remove('hidden');
+    $entries.classList.remove('hidden');
   }
+
+  data.view = 'entries';
 });
 // end@nav entries
 
-// start@new entry
+// start@new entry btn
 $newEntryBtn.addEventListener('click', function (e) {
   if (e.target && e.target.matches('.new-entry-btn')) {
     $entryForm.classList.remove('hidden');
+    $entries.className = 'entries container hidden';
+  } else {
+    $entries.classList.remove('hidden');
   }
+
+  data.view = 'entry-form';
 });
 // end@new entry
