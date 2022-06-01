@@ -22,11 +22,7 @@ $form.addEventListener('submit', function (event) {
   $form.reset();
 });
 
-function entry() {
-  var entryImg = data.entries.map(a => a.photoUrlValue);
-  var entryTitle = data.entries.map(a => a.titleValue);
-  var entryNotes = data.entries.map(a => a.notesValue);
-
+function journal(entry) {
   var $li = document.createElement('li');
   $ul.appendChild($li);
 
@@ -42,6 +38,8 @@ function entry() {
   var $entryImg = document.createElement('img');
   $entryImg.classList.add('entry-img');
   $divColumnHalfEntriesImg.appendChild($entryImg);
+
+  $entryImg.setAttribute('src', entry.photoUrlValue);
   // end@image dom creation
 
   // start@title dom creation
@@ -60,6 +58,8 @@ function entry() {
   var $pTitle = document.createElement('p');
   $pTitle.classList.add('title');
   $divColumnFullEntriesTitle.appendChild($pTitle);
+
+  $pTitle.append(entry.titleValue);
   // end@title dom creation
 
   // start@notes dom creation
@@ -74,11 +74,17 @@ function entry() {
   var $pNotes = document.createElement('p');
   $pNotes.classList.add('notes');
   $divColumnFullEntriesNotes.appendChild($pNotes);
+
+  $pNotes.append(entry.notesValue);
   // end@notes dom creation
 
-  $entryImg.setAttribute('src', entryImg);
-  $pTitle.append(entryTitle);
-  $pNotes.append(entryNotes);
+  return $li;
 }
 
-entry();
+window.addEventListener('DOMContentLoaded', event => {
+  for (var i = 0; i < data.entries.length; i++) {
+    var journalEntries = journal(data.entries[i]);
+
+    $ul.appendChild(journalEntries);
+  }
+});
