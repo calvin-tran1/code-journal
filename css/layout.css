@@ -39,6 +39,16 @@
   text-overflow: clip;
 }
 
+.column-full.entries.title {
+  display: flex;
+}
+
+i {
+  padding-left: 16em;
+  color: rgba(86, 43, 129, 255);
+  font-size: 1.35rem;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
@@ -65,5 +75,9 @@
 
   .row.entries {
     width: 560px;
+  }
+
+  i {
+    padding-left: 7em;
   }
 }

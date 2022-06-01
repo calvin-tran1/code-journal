@@ -92,6 +92,12 @@ function journal(entry) {
   $pNotes.append(entry.notesValue);
   // end@notes dom creation
 
+  // start@edit icon dom creation
+  var $iEdit = document.createElement('i');
+  $iEdit.className = 'fas fa-pen';
+  $divColumnFullEntriesTitle.appendChild($iEdit);
+  // end@edit icon dom creation
+
   return $li;
 }
 // end@dom creation for entries

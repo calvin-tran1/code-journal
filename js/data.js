@@ -18,10 +18,10 @@ if (prevData !== null) {
     $entries.className = 'entries container hidden';
     $entryForm.className = 'entry-form container';
   }
-  if (data.entries === undefined) {
-    $entriesPlaceholder.className = 'entries-placeholder';
-  } else {
+  if (data.entries !== undefined) {
     $entriesPlaceholder.className = 'entries-placeholder hidden';
+  } else {
+    $entriesPlaceholder.classList.remove('hidden');
   }
 }
 
