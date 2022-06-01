@@ -48,7 +48,7 @@ textarea {
   text-align: right;
 }
 
-button {
+.save-btn {
   color: white;
   background-color: rgba(86, 43, 129, 255);
   border-style: none;
@@ -77,4 +77,17 @@ p.title {
 
 p {
   line-height: 1.5rem;
+}
+
+.entries-btn {
+  color: white;
+  background-color: rgba(86, 43, 129, 255);
+  border-style: none;
+  margin-top: 1.45rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }

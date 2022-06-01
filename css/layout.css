@@ -13,9 +13,17 @@
   flex-wrap: wrap;
 }
 
+.row-navbar {
+  display: flex;
+}
+
 .column-full,
 .column-half {
   width: 100%;
+}
+
+.column-half.header {
+  width: 40%;
 }
 
 .column-half.entries {
@@ -37,8 +45,9 @@
     width: 50%;
   }
 
-  .column-full.header {
+  .column-half.header {
     margin-left: 9em;
+    width: 22%;
   }
 
   .container.entries {
