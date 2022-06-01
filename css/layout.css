@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-.column-half.entries-list {
+.column-half.entries {
   overflow: auto;
   text-overflow: clip;
 }
@@ -41,12 +41,12 @@
     margin-left: 9em;
   }
 
-  .container.entries-list {
+  .container.entries {
     display: flex;
     justify-content: center;
   }
 
-  .row.entries-list {
+  .row.entries {
     width: 560px;
   }
 }
