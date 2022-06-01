@@ -29,7 +29,7 @@
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="entry-form container">
+    <div data-view="entry-form" class="entry-form container hidden">
       <div class="row">
         <div class="column-full">
           <form id="journal-form" method="post">
@@ -53,7 +53,7 @@
               <div class="column-full">
                 <label for="notes">Notes</label>
                 <textarea required rows="6" id="notes" name="notes"></textarea>
-                <div class="save-button">
+                <div class="save">
                   <button type="submit" class="save-btn">SAVE</button>
                 </div>
               </div>
@@ -66,8 +66,11 @@
       <div class="row">
         <div class="column-full">
           <div class="row entries">
-            <div class="column-full entries">
+            <div class="column-half entries-head">
               <h1>Entries</h1>
+            </div>
+            <div class="column-half entries-head new-entry">
+              <button type="button" class="new-entry-btn">NEW</button>
             </div>
           </div>
           <ul>

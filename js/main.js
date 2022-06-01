@@ -3,6 +3,7 @@ var $form = document.querySelector('#journal-form');
 var $ul = document.querySelector('ul');
 var $entriesBtn = document.querySelector('.entries-btn');
 var $entryForm = document.querySelector('.entry-form');
+var $newEntryBtn = document.querySelector('.new-entry-btn');
 
 // start@photoURL updates placeholder img
 $photoUrl.addEventListener('input', function () {
@@ -103,6 +104,16 @@ window.addEventListener('DOMContentLoaded', event => {
 $entriesBtn.addEventListener('click', function (e) {
   if (e.target && e.target.matches('.entries-btn')) {
     $entryForm.className = 'entry-form container hidden';
+  } else {
+    $entryForm.classList.remove('hidden');
   }
 });
 // end@nav entries
+
+// start@new entry
+$newEntryBtn.addEventListener('click', function (e) {
+  if (e.target && e.target.matches('.new-entry-btn')) {
+    $entryForm.classList.remove('hidden');
+  }
+});
+// end@new entry

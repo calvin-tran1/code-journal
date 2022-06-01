@@ -44,7 +44,7 @@ textarea {
   margin-bottom: 1.5rem;
 }
 
-.save-button {
+.save {
   text-align: right;
 }
 
@@ -56,6 +56,7 @@ textarea {
   padding: 8px 15px;
   font-weight: bold;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 header {
@@ -85,6 +86,17 @@ p {
   border-style: none;
   margin-top: 1.45rem;
   font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.new-entry-btn {
+  color: white;
+  background-color: rgba(86, 43, 129, 255);
+  border-style: none;
+  border-radius: 0.25rem;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin-top: 1.35rem;
   cursor: pointer;
 }
 

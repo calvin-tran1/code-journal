@@ -26,6 +26,14 @@
   width: 40%;
 }
 
+.column-half.entries-head {
+  width: 50%;
+}
+
+.column-half.entries-head.new-entry {
+  text-align: right;
+}
+
 .column-half.entries {
   overflow: auto;
   text-overflow: clip;
