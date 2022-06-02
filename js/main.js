@@ -13,7 +13,6 @@ $photoUrl.addEventListener('input', function () {
 // end@photoURL updates placeholder img
 
 // start@submit form inputs to data
-
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -37,15 +36,14 @@ $form.addEventListener('submit', function (event) {
 // end@submit form inputs to data
 
 // start@dom creation for entries
-var id = 0;
 function journal(entry) {
-  // start@li dom creation
+  // start@li node creation
   var $li = document.createElement('li');
-  $li.setAttribute('data-entry-id', id++);
+  $li.setAttribute('data-entry-id', entry.entryId);
   $ul.appendChild($li);
-  // end@li dom creation
+  // end@li node creation
 
-  // start@image dom creation
+  // start@image node creation
   var $divRowEntries = document.createElement('div');
   $divRowEntries.classList.add('row', 'entries');
   $li.appendChild($divRowEntries);
@@ -59,9 +57,9 @@ function journal(entry) {
   $divColumnHalfEntriesImg.appendChild($entryImg);
 
   $entryImg.setAttribute('src', entry.photoUrlValue);
-  // end@image dom creation
+  // end@image node creation
 
-  // start@title dom creation
+  // start@title node creation
   var $divColumnHalfEntriesTitleNotes = document.createElement('div');
   $divColumnHalfEntriesTitleNotes.classList.add('column-half', 'entries', 'title-notes');
   $divRowEntries.appendChild($divColumnHalfEntriesTitleNotes);
@@ -79,9 +77,9 @@ function journal(entry) {
   $divColumnFullEntriesTitle.appendChild($pTitle);
 
   $pTitle.append(entry.titleValue);
-  // end@title dom creation
+  // end@title node creation
 
-  // start@notes dom creation
+  // start@notes node creation
   var $divRowNotes = document.createElement('div');
   $divRowNotes.classList.add('row', 'notes');
   $divColumnHalfEntriesTitleNotes.appendChild($divRowNotes);
@@ -95,13 +93,13 @@ function journal(entry) {
   $divColumnFullEntriesNotes.appendChild($pNotes);
 
   $pNotes.append(entry.notesValue);
-  // end@notes dom creation
+  // end@notes node creation
 
-  // start@edit icon dom creation
+  // start@edit icon node creation
   var $edit = document.createElement('i');
   $edit.className = 'fas fa-pen';
   $divColumnFullEntriesTitle.appendChild($edit);
-  // end@edit icon dom creation
+  // end@edit icon node creation
 
   return $li;
 }
@@ -144,11 +142,21 @@ $newEntryBtn.addEventListener('click', function (e) {
 });
 // end@new entry
 
+// start@edit entry
 $ul.addEventListener('click', function (e) {
   if (e.target.matches('i')) {
     $entryForm.classList.remove('hidden');
     $entries.className = 'entries container hidden';
     data.view = 'entry-form';
-  }
 
+    var dataEntry = e.target.closest('li').getAttribute('data-entry-id');
+    dataEntry = parseInt(dataEntry);
+
+    if (data.entries.map(a => a.entryId).includes(dataEntry)) {
+      data.editing = data.entries.filter(entry => {
+        return entry.entryId === dataEntry;
+      });
+    }
+  }
 });
+// end@edit entry
