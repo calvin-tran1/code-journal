@@ -5,6 +5,8 @@ var $entriesBtn = document.querySelector('.entries-btn');
 var $entryForm = document.querySelector('.entry-form');
 var $newEntryBtn = document.querySelector('.new-entry-btn');
 var $entries = document.querySelector('.entries');
+var $title = document.querySelector('#title');
+var $notes = document.querySelector('#notes');
 
 // start@photoURL updates placeholder img
 $photoUrl.addEventListener('input', function () {
@@ -157,6 +159,10 @@ $ul.addEventListener('click', function (e) {
         return entry.entryId === dataEntry;
       });
     }
+
+    $title.value = data.editing.map(b => b.titleValue);
+    $photoUrl.value = data.editing.map(c => c.photoUrlValue);
+    $notes.value = data.editing.map(d => d.notesValue);
   }
 });
 // end@edit entry
