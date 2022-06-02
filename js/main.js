@@ -13,14 +13,15 @@ $photoUrl.addEventListener('input', function () {
 // end@photoURL updates placeholder img
 
 // start@submit form inputs to data
-var titleValue = $form.elements.title.value;
-var photoUrlValue = $form.elements.photoUrl.value;
-var notesValue = $form.elements.notes.value;
-var entryId = data.nextEntryId;
-var obj = { titleValue, photoUrlValue, notesValue, entryId };
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
+
+  var titleValue = $form.elements.title.value;
+  var photoUrlValue = $form.elements.photoUrl.value;
+  var notesValue = $form.elements.notes.value;
+  var entryId = data.nextEntryId;
+  var obj = { titleValue, photoUrlValue, notesValue, entryId };
 
   data.nextEntryId++;
   data.entries.unshift(obj);
@@ -142,3 +143,12 @@ $newEntryBtn.addEventListener('click', function (e) {
   data.view = 'entry-form';
 });
 // end@new entry
+
+$ul.addEventListener('click', function (e) {
+  if (e.target.matches('i')) {
+    $entryForm.classList.remove('hidden');
+    $entries.className = 'entries container hidden';
+    data.view = 'entry-form';
+  }
+
+});

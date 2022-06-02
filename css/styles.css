@@ -111,4 +111,5 @@ p {
 i.fas.fa-pen {
   color: rgba(86, 43, 129, 255);
   font-size: 1.35rem;
+  cursor: pointer;
 }
