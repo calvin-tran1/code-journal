@@ -13,14 +13,14 @@ $photoUrl.addEventListener('input', function () {
 // end@photoURL updates placeholder img
 
 // start@submit form inputs to data
+var titleValue = $form.elements.title.value;
+var photoUrlValue = $form.elements.photoUrl.value;
+var notesValue = $form.elements.notes.value;
+var entryId = data.nextEntryId;
+var obj = { titleValue, photoUrlValue, notesValue, entryId };
+
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
-
-  var titleValue = $form.elements.title.value;
-  var photoUrlValue = $form.elements.photoUrl.value;
-  var notesValue = $form.elements.notes.value;
-  var entryId = data.nextEntryId;
-  var obj = { titleValue, photoUrlValue, notesValue, entryId };
 
   data.nextEntryId++;
   data.entries.unshift(obj);
@@ -36,9 +36,13 @@ $form.addEventListener('submit', function (event) {
 // end@submit form inputs to data
 
 // start@dom creation for entries
+var id = 0;
 function journal(entry) {
+  // start@li dom creation
   var $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', id++);
   $ul.appendChild($li);
+  // end@li dom creation
 
   // start@image dom creation
   var $divRowEntries = document.createElement('div');
@@ -93,9 +97,9 @@ function journal(entry) {
   // end@notes dom creation
 
   // start@edit icon dom creation
-  var $iEdit = document.createElement('i');
-  $iEdit.className = 'fas fa-pen';
-  $divColumnFullEntriesTitle.appendChild($iEdit);
+  var $edit = document.createElement('i');
+  $edit.className = 'fas fa-pen';
+  $divColumnFullEntriesTitle.appendChild($edit);
   // end@edit icon dom creation
 
   return $li;
