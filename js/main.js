@@ -13,7 +13,14 @@ var $delete = document.querySelector('.delete-btn');
 var $modal = document.querySelector('.modal-overlay');
 var $cancel = document.querySelector('.cancel');
 var $confirm = document.querySelector('.confirm');
+var $entriesPlaceholder = document.querySelector('.entries-placeholder');
 
+// start@entries placeholder
+if (data.entries < 1) {
+  $entriesPlaceholder.className = 'entries-placeholder';
+} else {
+  $entriesPlaceholder.className = 'entries-placeholder hidden';
+}
 // start@photoURL updates placeholder img
 $photoUrl.addEventListener('input', function () {
   document.getElementById('img-placeholder').setAttribute('src', $photoUrl.value);
@@ -55,17 +62,17 @@ $form.addEventListener('submit', function (event) {
     data.nextEntryId++;
     data.entries.unshift(obj);
     document.getElementById('img-placeholder').setAttribute('src', 'images/placeholder-image-square.jpg');
+    $ul.prepend(createEntry(data.entries[0]));
   }
   $form.reset();
 
   data.view = 'entries';
 
+  $entriesPlaceholder.className = 'entries-placeholder hidden';
   $entries.classList.remove('hidden');
   $entryForm.classList.remove('hidden');
   $entryForm.className = 'entry-form container hidden';
   $delete.className = 'delete-btn hidden';
-
-  location.reload();
 });
 
 // start@dom creation for entries
@@ -237,7 +244,5 @@ $confirm.addEventListener('click', function (e) {
   $entryForm.classList.remove('hidden');
   $entryForm.className = 'entry-form container hidden';
   $delete.className = 'delete-btn hidden';
-
-  location.reload();
 });
 // end@confirm btn deletes entry
