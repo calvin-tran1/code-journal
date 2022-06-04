@@ -44,11 +44,6 @@ textarea {
   margin-bottom: 1.5rem;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
 .save-btn {
   color: white;
   background-color: rgba(86, 43, 129, 255);
@@ -58,6 +53,7 @@ textarea {
   font-weight: bold;
   margin-bottom: 2rem;
   cursor: pointer;
+  float: right;
 }
 
 .delete-btn {

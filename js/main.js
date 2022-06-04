@@ -9,6 +9,7 @@ var $title = document.querySelector('#title');
 var $notes = document.querySelector('#notes');
 var $imgPlaceholder = document.querySelector('#img-placeholder');
 var $list = document.querySelectorAll('li');
+var $delete = document.querySelector('.delete-btn');
 
 // start@photoURL updates placeholder img
 $photoUrl.addEventListener('input', function () {
@@ -59,6 +60,7 @@ $form.addEventListener('submit', function (event) {
   $entries.classList.remove('hidden');
   $entryForm.classList.remove('hidden');
   $entryForm.className = 'entry-form container hidden';
+  $delete.className = 'delete-btn hidden';
 
   location.reload();
 });
@@ -153,6 +155,7 @@ $entriesBtn.addEventListener('click', function (e) {
   }
 
   $form.reset();
+
   $imgPlaceholder.src = 'images/placeholder-image-square.jpg';
   data.view = 'entries';
 });
@@ -168,6 +171,7 @@ $newEntryBtn.addEventListener('click', function (e) {
   }
 
   $form.reset();
+  $delete.className = 'delete-btn hidden';
   $imgPlaceholder.src = 'images/placeholder-image-square.jpg';
   data.view = 'entry-form';
 });
@@ -188,7 +192,7 @@ $ul.addEventListener('click', function (e) {
         data.editing = data.entries[i];
       }
     }
-
+    $delete.classList.remove('hidden');
     $title.value = data.editing.titleValue;
     $photoUrl.value = data.editing.photoUrlValue;
     $imgPlaceholder.src = $photoUrl.value;
