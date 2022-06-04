@@ -222,6 +222,22 @@ $cancel.addEventListener('click', function (e) {
 });
 // end@cancel btn closes modal
 
+// start@confirm btn deletes entry
 $confirm.addEventListener('click', function (e) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+      $ul.children[i].remove();
+    }
+  }
+  data.view = 'entries';
 
+  $modal.className = 'modal-overlay close';
+  $entries.classList.remove('hidden');
+  $entryForm.classList.remove('hidden');
+  $entryForm.className = 'entry-form container hidden';
+  $delete.className = 'delete-btn hidden';
+
+  location.reload();
 });
+// end@confirm btn deletes entry
