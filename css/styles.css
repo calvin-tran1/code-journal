@@ -120,3 +120,58 @@ i.fas.fa-pen {
   font-size: 1.35rem;
   cursor: pointer;
 }
+
+.container.modal {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-overlay.open {
+  display: block;
+  position: fixed;
+  z-index: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0 0 0 / 68.5%);
+}
+
+.modal-overlay.close {
+  display: none;
+}
+
+.container.modal > .row > .column-full {
+  margin-top: 20rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  text-align: center;
+  padding: 1rem 3rem;
+}
+
+.cancel {
+  float: left;
+  color: black;
+  background-color: lightgrey;
+  border-style: none;
+  border-radius: 0.25rem;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin-top: 1.55rem;
+  cursor: pointer;
+}
+
+.confirm {
+  float: right;
+  color: white;
+  background-color: red;
+  border-style: none;
+  border-radius: 0.25rem;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin-top: 1.55rem;
+  cursor: pointer;
+}
