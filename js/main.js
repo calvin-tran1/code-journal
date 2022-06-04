@@ -10,6 +10,9 @@ var $notes = document.querySelector('#notes');
 var $imgPlaceholder = document.querySelector('#img-placeholder');
 var $list = document.querySelectorAll('li');
 var $delete = document.querySelector('.delete-btn');
+var $modal = document.querySelector('.modal-overlay');
+var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
 
 // start@photoURL updates placeholder img
 $photoUrl.addEventListener('input', function () {
@@ -200,3 +203,25 @@ $ul.addEventListener('click', function (e) {
   }
 });
 // end@edit entry
+
+// start@delete btn opens modal
+$delete.addEventListener('click', function (e) {
+  if (e.target.matches('.delete-btn')) {
+    $modal.className = 'modal-overlay open';
+  } else {
+    $modal.className = 'modal-overlay close';
+  }
+});
+// end@delete btn opens modal
+
+// start@cancel btn closes modal
+$cancel.addEventListener('click', function (e) {
+  if (e.target.matches('.cancel')) {
+    $modal.className = 'modal-overlay close';
+  }
+});
+// end@cancel btn closes modal
+
+$confirm.addEventListener('click', function (e) {
+
+});
