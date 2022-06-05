@@ -9,7 +9,18 @@ var $title = document.querySelector('#title');
 var $notes = document.querySelector('#notes');
 var $imgPlaceholder = document.querySelector('#img-placeholder');
 var $list = document.querySelectorAll('li');
+var $delete = document.querySelector('.delete-btn');
+var $modal = document.querySelector('.modal-overlay');
+var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
+var $entriesPlaceholder = document.querySelector('.entries-placeholder');
 
+// start@entries placeholder
+if (data.entries < 1) {
+  $entriesPlaceholder.className = 'entries-placeholder';
+} else {
+  $entriesPlaceholder.className = 'entries-placeholder hidden';
+}
 // start@photoURL updates placeholder img
 $photoUrl.addEventListener('input', function () {
   document.getElementById('img-placeholder').setAttribute('src', $photoUrl.value);
@@ -51,16 +62,17 @@ $form.addEventListener('submit', function (event) {
     data.nextEntryId++;
     data.entries.unshift(obj);
     document.getElementById('img-placeholder').setAttribute('src', 'images/placeholder-image-square.jpg');
+    $ul.prepend(createEntry(data.entries[0]));
   }
   $form.reset();
 
   data.view = 'entries';
 
+  $entriesPlaceholder.className = 'entries-placeholder hidden';
   $entries.classList.remove('hidden');
   $entryForm.classList.remove('hidden');
   $entryForm.className = 'entry-form container hidden';
-
-  location.reload();
+  $delete.className = 'delete-btn hidden';
 });
 
 // start@dom creation for entries
@@ -153,6 +165,7 @@ $entriesBtn.addEventListener('click', function (e) {
   }
 
   $form.reset();
+
   $imgPlaceholder.src = 'images/placeholder-image-square.jpg';
   data.view = 'entries';
 });
@@ -168,6 +181,7 @@ $newEntryBtn.addEventListener('click', function (e) {
   }
 
   $form.reset();
+  $delete.className = 'delete-btn hidden';
   $imgPlaceholder.src = 'images/placeholder-image-square.jpg';
   data.view = 'entry-form';
 });
@@ -188,7 +202,7 @@ $ul.addEventListener('click', function (e) {
         data.editing = data.entries[i];
       }
     }
-
+    $delete.classList.remove('hidden');
     $title.value = data.editing.titleValue;
     $photoUrl.value = data.editing.photoUrlValue;
     $imgPlaceholder.src = $photoUrl.value;
@@ -196,3 +210,39 @@ $ul.addEventListener('click', function (e) {
   }
 });
 // end@edit entry
+
+// start@delete btn opens modal
+$delete.addEventListener('click', function (e) {
+  if (e.target.matches('.delete-btn')) {
+    $modal.className = 'modal-overlay open';
+  } else {
+    $modal.className = 'modal-overlay close';
+  }
+});
+// end@delete btn opens modal
+
+// start@cancel btn closes modal
+$cancel.addEventListener('click', function (e) {
+  if (e.target.matches('.cancel')) {
+    $modal.className = 'modal-overlay close';
+  }
+});
+// end@cancel btn closes modal
+
+// start@confirm btn deletes entry
+$confirm.addEventListener('click', function (e) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+      $ul.children[i].remove();
+    }
+  }
+  data.view = 'entries';
+
+  $modal.className = 'modal-overlay close';
+  $entries.classList.remove('hidden');
+  $entryForm.classList.remove('hidden');
+  $entryForm.className = 'entry-form container hidden';
+  $delete.className = 'delete-btn hidden';
+});
+// end@confirm btn deletes entry
